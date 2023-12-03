@@ -51,15 +51,15 @@
 
             
             <h2>User Information</h2>
-            <p id="fullName"></p>
+            {{user}}
         
             <h2>Loan Application Details</h2>
-            <p>Application ID: <span id="applicationId"></span></p>
+            N/A
             
 
             <h2>Loan Status</h2>
-            <p>Balance: $<span id="balance"></span></p>
-            <p>Payment Status: <span id="paymentStatus"></span></p>
+            <p>Balance: ${{balance}}</p>
+            <p>Payment Status: N/A</p>
             <p id="applicationStatus"></p> <!-- Added line to display application status -->
           </div>
 
@@ -142,7 +142,7 @@
 
     <style>
       .dashboardimage {
-        background-image: url("Parallax_scroll.gif");
+        background-image: url("/static/Parallax_scroll.gif");
         height: 100vh;
         width: 100%;
         background-attachment: fixed;
