@@ -17,4 +17,4 @@ create table loan_applicatin
     lender_username varchar(20),
     primary key(username, application_id),
     foreign key(username) references user(username)
-    )
+    );
