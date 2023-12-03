@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Dashboard</title>
+</head>
+<body>
+
+<div class="container">
+  <div class="dashboard">
+    <h2>User Information</h2>
+    <p id="fullName"></p>
+
+    <h2>Loan Application Details</h2>
+    <p>Application ID: <span id="applicationId"></span></p>
+
+    <h2>Loan Status</h2>
+    <p>Balance: $<span id="balance"></span></p>
+    <p>Payment Status: <span id="paymentStatus"></span></p>
+  </div>
+</div>
+
+<script>
+  // Assume you have user data, loan application data, and loan status data
+  const userData = {
+    fullName: "John Doe",
+    // Add other user details as needed
+  };
+
+  const loanApplicationData = {
+    applicationId: "12345",
+    // Add other application details as needed
+  };
+
+  const loanStatusData = {
+    balance: 5000,
+    paymentStatus: "Pending",
+    // Add other loan status details as needed
+  };
+
+  // Update dashboard with data
+  document.getElementById('fullName').innerText = `Full Name: ${userData.fullName}`;
+  document.getElementById('applicationId').innerText = loanApplicationData.applicationId;
+  document.getElementById('balance').innerText = loanStatusData.balance;
+  document.getElementById('paymentStatus').innerText = loanStatusData.paymentStatus;
+</script>
+
+</body>
+</html>
 
