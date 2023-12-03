@@ -9,17 +9,22 @@
 <body>
 
 <div class="container">
-  <div class="dashboard">
-    <h2>User Information</h2>
-    <p id="fullName"></p>
-
-    <h2>Loan Application Details</h2>
-    <p>Application ID: <span id="applicationId"></span></p>
-
-    <h2>Loan Status</h2>
-    <p>Balance: $<span id="balance"></span></p>
-    <p>Payment Status: <span id="paymentStatus"></span></p>
+  <div class="nav nav-tabs" id="myTabs">
+    <button class="nav-link active" id="nav-acc-info-tab" data-bs-target="#nav-acc-info" type="button" role="tab" aria-controls="nav-acc-info" aria-selected="true">Account Info</button>
   </div>
+
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-acc-info" role="tabpanel" aria-labelledby="nav-acc-info-tab" tabindex="0">
+      <h2>User Information</h2>
+      <p id="fullName"></p>
+  
+      <h2>Loan Application Details</h2>
+      <p>Application ID: <span id="applicationId"></span></p>
+  
+      <h2>Loan Status</h2>
+      <p>Balance: $<span id="balance"></span></p>
+      <p>Payment Status: <span id="paymentStatus"></span></p>
+    </div>
 </div>
 
 <script>
