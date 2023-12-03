@@ -1,48 +1,79 @@
+<html>
+<head>
+  </head>
+<body>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <title>Dashboard</title>
 </head>
 <body>
 
 <div class="container">
-  <div class="nav nav-tabs" id="myTabs">
-    <button class="nav-link active" id="nav-acc-info-tab" data-bs-target="#nav-acc-info" type="button" role="tab" aria-controls="nav-acc-info" aria-selected="true">Account Info</button>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#" onclick="openTab('dashboardTab')">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" onclick="openTab('yourLoanTab')">Your Loan</a>
+    </li>
+  </ul>
+
+  <div id="dashboardTab" class="tab-content">
+    <h2>User Information</h2>
+    <p id="fullName"></p>
+
+    <h2>Loan Application Details</h2>
+    <p>Application ID: <span id="applicationId"></span></p>
+
+    <h2>Loan Status</h2>
+    <p>Balance: $<span id="balance"></span></p>
+    <p>Payment Status: <span id="paymentStatus"></span></p>
+    <p id="applicationStatus"></p> <!-- Added line to display application status -->
   </div>
 
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-acc-info" role="tabpanel" aria-labelledby="nav-acc-info-tab" tabindex="0">
-      <h2>User Information</h2>
-      <p id="fullName"></p>
-  
-      <h2>Loan Application Details</h2>
-      <p>Application ID: <span id="applicationId"></span></p>
-  
-      <h2>Loan Status</h2>
-      <p>Balance: $<span id="balance"></span></p>
-      <p>Payment Status: <span id="paymentStatus"></span></p>
-    </div>
+  <div id="yourLoanTab" class="tab-content" style="display: none;">
+    <h2>Your Loan</h2>
+    <label for="loanAmount">Loan Amount:</label>
+    <input type="number" id="loanAmount" placeholder="Enter the amount you need" required>
+
+    <label for="monthlyInterestRate">Monthly Interest Rate (%):</label>
+    <input type="number" id="monthlyInterestRate" placeholder="Enter the monthly interest rate" required>
+
+    <button onclick="submitLoanApplication()">Submit Loan Application</button>
+  </div>
 </div>
 
+<script src="dashboard.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
 <script>
-  // Assume you have user data, loan application data, and loan status data
+ // Assume we have user data, loan application data, and loan status data
   const userData = {
     fullName: "John Doe",
-    // Add other user details as needed
+    
   };
 
   const loanApplicationData = {
     applicationId: "12345",
-    // Add other application details as needed
+    status: "Approved", 
+    
   };
 
   const loanStatusData = {
     balance: 5000,
     paymentStatus: "Pending",
-    // Add other loan status details as needed
+    
   };
 
   // Update dashboard with data
@@ -50,8 +81,34 @@
   document.getElementById('applicationId').innerText = loanApplicationData.applicationId;
   document.getElementById('balance').innerText = loanStatusData.balance;
   document.getElementById('paymentStatus').innerText = loanStatusData.paymentStatus;
+
+  function openTab(tabName) {
+    const tabs = document.getElementsByClassName('tab-content');
+    for (const tab of tabs) {
+      tab.style.display = 'none';
+    }
+
+    document.getElementById(tabName).style.display = 'block';
+  }
+
+  function submitLoanApplication() {
+    const loanAmount = document.getElementById('loanAmount').value;
+    const monthlyInterestRate = document.getElementById('monthlyInterestRate').value;
+
+    
+    console.log("Loan Amount:", loanAmount);
+    console.log("Monthly Interest Rate:", monthlyInterestRate);
+
+    
+    loanApplicationData.status = "Approved";
+
+    // Optionally, you can update the dashboard with the submitted data
+    document.getElementById('balance').innerText = loanAmount;
+    document.getElementById('paymentStatus').innerText = `Interest Rate: ${monthlyInterestRate}%`;
+
+    // Display the application status
+    document.getElementById('applicationStatus').innerText = `Application Status: ${loanApplicationData.status}`;
+  }
+
 </script>
-
 </body>
-</html>
-
