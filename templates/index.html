@@ -1,31 +1,58 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const username = document.getElementById('loginUsername').value;
-  const password = document.getElementById('loginPassword').value;
+<html>
+<head>
+  </head>
+<body>
 
-  // Add your login logic here
-  document.getElementById('loginMessage').innerText = `Logged in as ${username}`;
-});
+  <!-- registration form -->
+  <form action="/registerAuth" method="POST">
+    <input type="text" name = "username" placeholder="username" required/> </br>
+    <input type="password" name = "password" placeholder="password" required/></br>
+    <input type="text" name = "account_number" placeholder="account_number" required/> </br>
+    <input type="text" name = "balance" placeholder="balance" required/> </br>
+    <input type="text" name = "cvv" placeholder="cvv" required/> </br>
+    <input type="text" name = "exp_date" placeholder="exp_date" required/> </br>
+    <input type="text" name = "credit_score" placeholder="credit score" required/> </br>
+    <input type="submit" value = Register />
+  </form>
 
-document.getElementById('registerForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const username = document.getElementById('registerUsername').value;
-  const password = document.getElementById('registerPassword').value;
-  
-  // Updated: Get first and last names
-  const firstName = document.getElementById('registerFirstName').value;
-  const lastName = document.getElementById('registerLastName').value;
+  <!-- login form -->
+  <form action="/loginAuth" method="POST">
+    <input type="text" name = "username" placeholder="username" required/> </br>
+    <input type="password" name = "password" placeholder="password" required/></br>
+    <input type="submit" value = Login />
+  </form>
 
-  // Add your registration logic here
-  document.getElementById('registerMessage').innerText = `Registered as ${firstName} ${lastName} (${username})`;
-});
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
 
-function showRegisterForm() {
-  document.getElementById('login-form').style.display = 'none';
-  document.getElementById('register-form').style.display = 'block';
-}
- 
-function showLoginForm() {
-  document.getElementById('login-form').style.display = 'block';
-  document.getElementById('register-form').style.display = 'none';
-}
+    // Add your login logic here
+    document.getElementById('loginMessage').innerText = `Logged in as ${username}`;
+  });
+
+  document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('registerUsername').value;
+    const password = document.getElementById('registerPassword').value;
+    
+    // Updated: Get first and last names
+    const firstName = document.getElementById('registerFirstName').value;
+    const lastName = document.getElementById('registerLastName').value;
+
+    // Add your registration logic here
+    document.getElementById('registerMessage').innerText = `Registered as ${firstName} ${lastName} (${username})`;
+  });
+
+  function showRegisterForm() {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('register-form').style.display = 'block';
+  }
+   
+  function showLoginForm() {
+    document.getElementById('login-form').style.display = 'block';
+    document.getElementById('register-form').style.display = 'none';
+  }
+</script>
+</body>
