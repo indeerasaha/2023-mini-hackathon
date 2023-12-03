@@ -68,7 +68,7 @@ def registerAuth():
 		cursor.execute(ins, (username, password, balance, card_number, cvv, exp_date, credit_score))
 		conn.commit()
 		cursor.close()
-		return render_template('Dashboard.html')
+		return render_template('index.html')
 
 #Authenticates the login
 @app.route('/loginAuth', methods=['GET', 'POST'])
