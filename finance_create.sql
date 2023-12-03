@@ -9,9 +9,9 @@ create table user
 	 primary key (username)
 	);
 
-create table loan_applicatin
+create table loan_application
     (username       varchar(20),
-    application_id  numeric,(7,0),
+    application_id  numeric(7,0),
     bio             varchar(300), -- 300 char limit
     total_amount    numeric(5,2), -- 99,999 limit
     lender_username varchar(20),
