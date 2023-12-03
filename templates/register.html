@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--web icon and title -->
+  <title>LendLinker</title>
+  <link rel="icon" href="linkedlendlogo.png" sizes="17x25">
+  <!--google fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lato">
+  <link rel="stylesheet" href="style.css">
+  <!--bootstrap cdns -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="homeimage">
+    <div class="container-title" style="border-radius: 5px; padding: 2%;">
+      <div class="hometitletext">
+        <center>
+          <h1> Register for Lend Linker! </h1>
+          <div class="container-fluid">
+            <form>
+              <div class="row align-items-start">
+                <div class = "col">
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="exampleFormControlInput1"
+                  placeholder="username" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleFormControlInput1"
+                  placeholder="password" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Account Number </label>
+                <input type="text" class="form-control" name = "account_number" id="exampleFormControlInput1" placeholder="account number" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"> Balance of Account </label>
+                <input type="text" class="form-control" name = "balance" id="exampleFormControlInput1" placeholder="balance of account" required>
+
+                </div>
+              </div> 
+              <div class = "col"> 
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">CVV</label>
+                <input type="text" class="form-control" name = "cvv" id="exampleFormControlInput1" placeholder="cvv" required>
+
+                </div>
+
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Expiration Date </label>
+                <input type="text" class="form-control" name = "exp_date" id="exampleFormControlInput1" placeholder="expiration date" required>
+
+                </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Credit Score </label>
+                <input type="text" class="form-control" name = "credit_score" id="exampleFormControlInput1" placeholder="credit score" required>
+              </div>
+
+
+
+
+              <div class="mb-3">
+                <input type="submit" class="btn btn-primary" value="Register" />
+              </div>
+              </div> 
+            </form>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .homeimage {
+      background-image: url("lendlinkerbackground.png");
+      height: 100vh;
+      width: 100%;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .container-title {
+      display: absolute;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+
+      /* Design properties */
+      background-color: white;
+      padding: 2px;
+
+      position: absolute;
+      left: 20%;
+      right: 20%;
+      top: 30%;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-eKlS1z+jZuVS3Zl5MjRZzQn1Er74lYkD4PLO9Jb6c68/K8U3M+qIhAZqUvA5PeoI"
+    crossorigin="anonymous"></script>
+
+  <div class="footer" style="background-color: black;">
+    <h2 style="color: white;"> Lend Linker </h2>
+    <h3 style="color: white;">
+      Brought to you by: LendLinker
+    </h3>
+  </div>
+
+</body>
+
+</html>
