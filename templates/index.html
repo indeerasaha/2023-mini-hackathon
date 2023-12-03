@@ -11,16 +11,20 @@ document.getElementById('registerForm').addEventListener('submit', function(even
   event.preventDefault();
   const username = document.getElementById('registerUsername').value;
   const password = document.getElementById('registerPassword').value;
+  
+  // Updated: Get first and last names
+  const firstName = document.getElementById('registerFirstName').value;
+  const lastName = document.getElementById('registerLastName').value;
 
   // Add your registration logic here
-  document.getElementById('registerMessage').innerText = `Registered as ${username}`;
+  document.getElementById('registerMessage').innerText = `Registered as ${firstName} ${lastName} (${username})`;
 });
 
 function showRegisterForm() {
   document.getElementById('login-form').style.display = 'none';
   document.getElementById('register-form').style.display = 'block';
 }
-
+ 
 function showLoginForm() {
   document.getElementById('login-form').style.display = 'block';
   document.getElementById('register-form').style.display = 'none';
