@@ -22,12 +22,21 @@ def hello():
 def Dashboard():
 	return render_template('Dashboard.html')
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+	return render_template('register.html')
+
 #Authenticates the register
 @app.route('/registerAuth', methods=['GET', 'POST'])
 def registerAuth():
 	#grabs information from the forms
 	username = request.form['username']
 	password = request.form['password']
+	card_number = request.form['card_number']
+	balance = request.form['balance']
+	cvv = request.form['cvv']
+	exp_date = request.form['exp_date']
+	credit_score = request.form['credit_score']
 
 	#cursor used to send queries
 	cursor = conn.cursor()
@@ -43,8 +52,8 @@ def registerAuth():
 		error = "This user already exists"
 		return render_template('index.html', error = error)
 	else:
-		ins = 'INSERT INTO user VALUES(%s, %s)'
-		cursor.execute(ins, (username, password))
+		ins = 'INSERT INTO user VALUES(%s, %s, %s, %s, %s, %s, %s)'
+		cursor.execute(ins, (username, password, balance, card_number, cvv, exp_date, credit_score))
 		conn.commit()
 		cursor.close()
 		return render_template('Dashboard.html')
