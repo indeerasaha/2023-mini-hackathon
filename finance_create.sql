@@ -18,5 +18,3 @@ create table loan_applicatin
     primary key(username, application_id),
     foreign key(username) references user(username)
     )
--- user: username, password, balance, account_number, cvv, exp_date, credit score
--- loan_application: username, application_id, bio, total_amount, lender (null)
