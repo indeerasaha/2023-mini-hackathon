@@ -1,0 +1,27 @@
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const username = document.getElementById('loginUsername').value;
+  const password = document.getElementById('loginPassword').value;
+
+  // Add your login logic here
+  document.getElementById('loginMessage').innerText = `Logged in as ${username}`;
+});
+
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const username = document.getElementById('registerUsername').value;
+  const password = document.getElementById('registerPassword').value;
+
+  // Add your registration logic here
+  document.getElementById('registerMessage').innerText = `Registered as ${username}`;
+});
+
+function showRegisterForm() {
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('register-form').style.display = 'block';
+}
+
+function showLoginForm() {
+  document.getElementById('login-form').style.display = 'block';
+  document.getElementById('register-form').style.display = 'none';
+}
