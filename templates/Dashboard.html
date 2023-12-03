@@ -1,114 +1,202 @@
-<html>
-<head>
-  </head>
-<body>
-
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--web icon aand title -->
+  <title>LendLinker</title>
+  <link rel="icon" href="linkedlendlogo.png" sizes="17x25">
+  <!--google fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lato">
+  <link rel="stylesheet" href="style.css">
+  <!--bootstrap cdns -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+
+
 </head>
-<body>
 
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#" onclick="openTab('dashboardTab')">Account Info</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" onclick="openTab('yourLoanTab')">Your Loan</a>
-    </li>
-  </ul>
+<body style = "font-family: 'Lora', serif;">
+  <div class="dashboardimage">
+    <div class="container-title" style="border-radius: 5px;">
+      <div class="hometitletext">
 
-  <div id="dashboardTab" class="tab-content">
-    <h2>User Information</h2>
-    {{user}}
+        <div class = "dashboard-container"> 
 
-    <h2>Loan Application Details</h2>
-    <p>Application ID: <span>8174764</span></p>
+        <div class="container-fluid">
+          <ul class="nav nav-tabs flexbox";">
+            <li class="nav-item" style="padding: 2%;">
+              <a class="nav-link active" aria-current="page" href="#" onclick="openTab('dashboardTab')">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="openTab('yourLoanTab')">Loan Application</a>
+            </li>
+          </ul>
 
-    <h2>Loan Status</h2>
-    <p>Balance: $<span>{{balance}}</span></p>
-    <p>Payment Status: Unpaid</p>
-    <p id="applicationStatus"></p> <!-- Added line to display application status -->
+          <div id="dashboardTab" class="tab-content">
+            <center> 
+
+            <div class = "lightblue"> 
+
+            <h2> Welcome to the dashboard!</h2>
+            <p> Here, you are able to see your account information and the status of your loan. </p>
+            
+              </center>
+          </div> 
+
+            
+            <h2>User Information</h2>
+            <p id="fullName"></p>
+        
+            <h2>Loan Application Details</h2>
+            <p>Application ID: <span id="applicationId"></span></p>
+            
+
+            <h2>Loan Status</h2>
+            <p>Balance: $<span id="balance"></span></p>
+            <p>Payment Status: <span id="paymentStatus"></span></p>
+            <p id="applicationStatus"></p> <!-- Added line to display application status -->
+          </div>
+
+          <div id="yourLoanTab" class="tab-content" style="display: none;">
+            <h2>Loan Applications! Want to apply for a loan?</h2>
+            <label for="loanAmount">Loan Amount:</label>
+            <input type="number" id="loanAmount" placeholder="Enter the amount you need" required>
+
+            <label for="monthlyInterestRate">Monthly Interest Rate (%):</label>
+            <input type="number" id="monthlyInterestRate" placeholder="Enter the monthly interest rate" required> 
+             <br> </br> 
+            <a class="btn btn-dark" href="register.html" role="button" onclick="submitLoanApplication()">
+             
+                Submit Loan Application
+            </a>
+            
+          </div>
+
+        </div>
+        </di>
+              </div>
+            </div>
+          </div>
   </div>
 
-  <div id="yourLoanTab" class="tab-content" style="display: none;">
-    <h2>Your Loan</h2>
-    <label for="loanAmount">Loan Amount:</label>
-    <input type="number" id="loanAmount" placeholder="Enter the amount you need" required>
+  <script>
+   // Assume we have user data, loan application data, and loan status data
+    const userData = {
+      fullName: "John Doe",
 
-    <label for="monthlyInterestRate">Monthly Interest Rate (%):</label>
-    <input type="number" id="monthlyInterestRate" placeholder="Enter the monthly interest rate" required>
+    };
 
-    <button onclick="submitLoanApplication()">Submit Loan Application</button>
-  </div>
-</div>
+    const loanApplicationData = {
+      applicationId: "12345",
+      status: "Approved", 
 
-<script src="dashboard.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    };
 
+    const loanStatusData = {
+      balance: 5000,
+      paymentStatus: "Pending",
 
-<script>
- // Assume we have user data, loan application data, and loan status data
-  const userData = {
-    fullName: "John Doe",
-    
-  };
+    };
 
-  const loanApplicationData = {
-    applicationId: "12345",
-    status: "Approved", 
-    
-  };
+    // Update dashboard with data
+    document.getElementById('fullName').innerText = `Full Name: ${userData.fullName}`;
+    document.getElementById('applicationId').innerText = loanApplicationData.applicationId;
+    document.getElementById('balance').innerText = loanStatusData.balance;
+    document.getElementById('paymentStatus').innerText = loanStatusData.paymentStatus;
 
-  const loanStatusData = {
-    balance: 5000,
-    paymentStatus: "Pending",
-    
-  };
+    function openTab(tabName) {
+      const tabs = document.getElementsByClassName('tab-content');
+      for (const tab of tabs) {
+        tab.style.display = 'none';
+      }
 
-  // Update dashboard with data
-  document.getElementById('fullName').innerText = `Full Name: ${userData.fullName}`;
-  document.getElementById('applicationId').innerText = loanApplicationData.applicationId;
-  document.getElementById('balance').innerText = loanStatusData.balance;
-  document.getElementById('paymentStatus').innerText = loanStatusData.paymentStatus;
-
-  function openTab(tabName) {
-    const tabs = document.getElementsByClassName('tab-content');
-    for (const tab of tabs) {
-      tab.style.display = 'none';
+      document.getElementById(tabName).style.display = 'block';
     }
 
-    document.getElementById(tabName).style.display = 'block';
-  }
+    function submitLoanApplication() {
+      const loanAmount = document.getElementById('loanAmount').value;
+      const monthlyInterestRate = document.getElementById('monthlyInterestRate').value;
 
-  function submitLoanApplication() {
-    const loanAmount = document.getElementById('loanAmount').value;
-    const monthlyInterestRate = document.getElementById('monthlyInterestRate').value;
 
-    
-    console.log("Loan Amount:", loanAmount);
-    console.log("Monthly Interest Rate:", monthlyInterestRate);
+      console.log("Loan Amount:", loanAmount);
+      console.log("Monthly Interest Rate:", monthlyInterestRate);
 
-    
-    loanApplicationData.status = "Approved";
 
-    // Optionally, you can update the dashboard with the submitted data
-    document.getElementById('balance').innerText = loanAmount;
-    document.getElementById('paymentStatus').innerText = `Interest Rate: ${monthlyInterestRate}%`;
+      loanApplicationData.status = "Approved";
 
-    // Display the application status
-    document.getElementById('applicationStatus').innerText = `Application Status: ${loanApplicationData.status}`;
-  }
+      // Optionally, you can update the dashboard with the submitted data
+      document.getElementById('balance').innerText = loanAmount;
+      document.getElementById('paymentStatus').innerText = `Interest Rate: ${monthlyInterestRate}%`;
 
-</script>
+      // Display the application status
+      document.getElementById('applicationStatus').innerText = `Application Status: ${loanApplicationData.status}`;
+    }
+
+  </script>
+
+    <style>
+      .dashboardimage {
+        background-image: url("Parallax_scroll.gif");
+        height: 100vh;
+        width: 100%;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+      }
+
+      .flexbox { 
+       display:inline-flex;
+       justify-content: space-evenly;
+       align-items: center; 
+       width: 100%;
+      } 
+
+      .container-title {
+        display: absolute;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+
+        /* Design properties */
+        background-color: white;
+        padding: 2px;
+
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 30%;
+      }
+
+      .lightblue {
+        background-color: #CCEDE5; 
+        border: 2px solid #CCEDE5;
+        border-radius: 5px;
+        padding: 2%; 
+
+        
+      }
+    </style>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-eKlS1z+jZuVS3Zl5MjRZzQn1Er74lYkD4PLO9Jb6c68/K8U3M+qIhAZqUvA5PeoI"
+  crossorigin="anonymous"></script>
 </body>
+
+    <div class="footer" style="background-color: black;">
+      <h2 style="color: white;"> Lend Linker </h2>
+      <h3 style="color: white;">
+        Brought to you by: LendLinker
+        <h3>
+    </div>
+
