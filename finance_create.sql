@@ -6,7 +6,7 @@ create table user
     cvv             numeric(3,0),
     exp_date        date,
     credit_score    numeric(3,0),
-	 primary key (username)
+	primary key (username)
 	);
 
 create table loan_application
@@ -15,6 +15,7 @@ create table loan_application
     bio             varchar(300), -- 300 char limit
     total_amount    numeric(5,2), -- 99,999 limit
     lender_username varchar(20),
+    paid_status     varchar(6),
     primary key(username, application_id),
     foreign key(username) references user(username)
     );

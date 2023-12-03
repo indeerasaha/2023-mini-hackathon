@@ -26,14 +26,14 @@
 
   <div id="dashboardTab" class="tab-content">
     <h2>User Information</h2>
-    <p id="fullName"></p>
+    {{user}}
 
     <h2>Loan Application Details</h2>
-    <p>Application ID: <span id="applicationId"></span></p>
+    <p>Application ID: <span>8174764</span></p>
 
     <h2>Loan Status</h2>
-    <p>Balance: $<span id="balance"></span></p>
-    <p>Payment Status: <span id="paymentStatus"></span></p>
+    <p>Balance: $<span>{{balance}}</span></p>
+    <p>Payment Status: Unpaid</p>
     <p id="applicationStatus"></p> <!-- Added line to display application status -->
   </div>
 

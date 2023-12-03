@@ -20,7 +20,18 @@ def hello():
 
 @app.route('/Dashboard', methods=['GET', 'POST'])
 def Dashboard():
-	return render_template('Dashboard.html')
+	# get all the attributes of the logged in user
+	cursor = conn.cursor()
+	query = 'SELECT * FROM user WHERE username = %s'
+	cursor.execute(query, (session['username']))
+	data = cursor.fetchall()[0] # NEED THE [0]
+	cursor.close()
+	error = None
+
+	if(data):
+		#creates a session for the the user
+		#session is a built in
+		return render_template('Dashboard.html', user = data['username'], balance=data['balance'])
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -34,6 +45,7 @@ def registerAuth():
 	password = request.form['password']
 	card_number = request.form['card_number']
 	balance = request.form['balance']
+	# session['balance'] = balance
 	cvv = request.form['cvv']
 	exp_date = request.form['exp_date']
 	credit_score = request.form['credit_score']
@@ -85,5 +97,7 @@ def loginAuth():
 		error = 'Invalid login or username'
 		return render_template('index.html', error=error)
 	
+app.secret_key = 'some key that you will never guess'
+
 if __name__ == "__main__":
 	app.run('127.0.0.1', 5000, debug = True)
